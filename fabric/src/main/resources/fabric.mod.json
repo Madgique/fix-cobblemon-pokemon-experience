@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "fix_cobblemon_pokemon_experience",
+  "version": "${version}",
+  "name": "Fix Cobblemon Pokemon Experience",
+  "description": "Gives experience after each Pokemon is defeated instead of at the end of battle, like in the main Pokemon games.",
+  "authors": [
+    "Madgique"
+  ],
+  "contact": {
+    "sources": "https://github.com/Madgique/fix_cobblemon_pokemon_experience"
+  },
+  "license": "MIT",
+  "icon": "assets/fix_cobblemon_pokemon_experience/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.madgique.fix_cobblemon_pokemon_experience.fabric.FixCobblemonPokemonExperienceFabric"
+    ]
+  },
+  "mixins": [
+    "fix_cobblemon_pokemon_experience.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "cobblemon": ">=1.7.0",
+    "fabric-language-kotlin": "*"
+  }
+}

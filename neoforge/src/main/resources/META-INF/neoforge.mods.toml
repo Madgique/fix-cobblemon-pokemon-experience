@@ -1,0 +1,37 @@
+modLoader = "kotlinforforge"
+loaderVersion = "[5,)"
+license = "MIT"
+
+[[mods]]
+modId = "fix_cobblemon_pokemon_experience"
+version = "${version}"
+displayName = "Fix Cobblemon Pokemon Experience"
+logoFile = "icon.png"
+authors = "Madgique"
+description = '''
+Gives experience after each Pokemon is defeated instead of at the end of battle, like in the main Pokemon games.
+'''
+
+[[dependencies.fix_cobblemon_pokemon_experience]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fix_cobblemon_pokemon_experience]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fix_cobblemon_pokemon_experience]]
+modId = "cobblemon"
+type = "required"
+versionRange = "[1.7.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "fix_cobblemon_pokemon_experience.mixins.json"
