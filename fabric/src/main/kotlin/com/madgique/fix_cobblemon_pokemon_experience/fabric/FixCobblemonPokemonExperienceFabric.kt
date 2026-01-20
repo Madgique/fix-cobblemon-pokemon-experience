@@ -6,7 +6,10 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor
+import com.cobblemon.mod.common.api.pokemon.experience.BattleExperienceSource
+import com.cobblemon.mod.common.battles.actor.PlayerBattleActor
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
+import com.cobblemon.mod.common.util.getPlayer
 import net.fabricmc.api.ModInitializer
 import net.minecraft.network.chat.Component
 
@@ -62,12 +65,36 @@ class FixCobblemonPokemonExperienceFabric : ModInitializer {
 
         // Donner l'XP si > 0
         if (experience > 0) {
-            opponentActor.awardExperience(opponentPokemon, experience)
+            val oldLevel = pokemon.level
 
-            // Envoyer le message dans le journal de combat
+            // Donner l'XP avec gestion du level up
+            if (opponentActor is PlayerBattleActor) {
+                val player = opponentActor.uuid.getPlayer()
+                if (player != null) {
+                    val source = BattleExperienceSource(battle, opponentPokemon.facedOpponents.toList())
+                    pokemon.addExperienceWithPlayer(player, source, experience)
+                } else {
+                    opponentActor.awardExperience(opponentPokemon, experience)
+                }
+            } else {
+                opponentActor.awardExperience(opponentPokemon, experience)
+            }
+
+            val newLevel = pokemon.level
+
+            // Envoyer le message d'XP dans le journal de combat
             val pokemonName = pokemon.getDisplayName()
             val message = Component.translatable("cobblemon.experience.gained", pokemonName, experience)
             battle.broadcastChatMessage(message)
+
+            // Si le pokémon a level up, envoyer un message et mettre à jour les données
+            if (newLevel > oldLevel) {
+                val levelUpMessage = Component.translatable("cobblemon.experience.level_up", pokemonName, newLevel)
+                battle.broadcastChatMessage(levelUpMessage)
+
+                // Mettre à jour les données du pokémon côté client
+                opponentPokemon.sendUpdate()
+            }
         }
     }
 }
