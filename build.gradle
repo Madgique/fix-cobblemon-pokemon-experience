@@ -24,7 +24,9 @@ subprojects {
         archivesName = rootProject.archives_name
     }
 
-    version = "${rootProject.mod_version}+${rootProject.minecraft_version}-${project.name}"
+    // Extract just the Cobblemon version (e.g., "1.6.1" from "1.6.1+1.21.1")
+    def cobblemonVer = rootProject.cobblemon_version.split('\\+')[0]
+    version = "${rootProject.mod_version}+${rootProject.minecraft_version}-cobblemon${cobblemonVer}-${project.name}"
 
     repositories {
         // Add repositories to retrieve artifacts from in here.
