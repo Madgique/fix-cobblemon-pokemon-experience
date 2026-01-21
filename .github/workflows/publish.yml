@@ -51,6 +51,10 @@ jobs:
           dependencies: |
             cobblemon(required)
 
+          java: 21
+          modrinth-featured: true
+          curseforge-server-side: required
+
           changelog-file: CHANGELOG.md
 
       - name: Publish Fabric to Modrinth and CurseForge
@@ -73,5 +77,9 @@ jobs:
           dependencies: |
             cobblemon(required)
             fabric-api(required)
+
+          java: 21
+          modrinth-featured: true
+          curseforge-server-side: required
 
           changelog-file: CHANGELOG.md
