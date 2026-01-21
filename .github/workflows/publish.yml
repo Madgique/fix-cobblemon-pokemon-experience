@@ -50,6 +50,7 @@ jobs:
 
           dependencies: |
             cobblemon(required)
+            kotlin-for-forge(required)
 
           java: 21
           modrinth-featured: true
@@ -77,6 +78,7 @@ jobs:
           dependencies: |
             cobblemon(required)
             fabric-api(required)
+            fabric-language-kotlin(required)
 
           java: 21
           modrinth-featured: true
