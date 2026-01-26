@@ -4,7 +4,7 @@ A Fabric/NeoForge mod that fixes the experience gain system in Cobblemon to work
 
 ## The Problem
 
-In Cobblemon, experience points (XP) are only awarded at the **end of a battle**. This works fine for wild Pokemon encounters (1v1), but becomes problematic when using trainer mods like [Radical Cobblemon Trainers (RCT)](https://modrinth.com/mod/radical-cobblemon-trainers).
+In Cobblemon, experience points (XP) are only awarded at the **end of a battle**. This works fine for wild Pokemon encounters (1v1), but becomes problematic when using trainer mods like [Radical Cobblemon Trainers (RCT)](https://modrinth.com/mod/rctmod).
 
 In trainer battles with multiple Pokemon, you only receive XP after defeating **all** of the trainer's Pokemon, instead of after each knockout.
 

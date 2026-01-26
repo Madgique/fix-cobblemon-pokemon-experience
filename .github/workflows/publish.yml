@@ -41,7 +41,7 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           files: neoforge/build/libs/*-neoforge.jar
-          name: Fix Cobblemon Pokemon Experience ${{ steps.get_version.outputs.VERSION }}+1.21.1 (NeoForge)
+          name: FCPE for Cobblemon 1.7.1 ${{ steps.get_version.outputs.VERSION }}+1.21.1 (NeoForge)
           version: ${{ steps.get_version.outputs.VERSION }}+1.21.1-neoforge
           version-type: release
 
@@ -49,12 +49,11 @@ jobs:
           game-versions: "1.21.1"
 
           dependencies: |
-            cobblemon(required)
+            cobblemon@1.7.0(required)
             kotlin-for-forge(required)
 
           java: 21
           modrinth-featured: true
-          curseforge-server-side: required
 
           changelog-file: CHANGELOG.md
 
@@ -68,7 +67,7 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           files: fabric/build/libs/*-fabric.jar
-          name: Fix Cobblemon Pokemon Experience ${{ steps.get_version.outputs.VERSION }}+1.21.1 (Fabric)
+          name: FCPE for Cobblemon 1.7.1 ${{ steps.get_version.outputs.VERSION }}+1.21.1 (Fabric)
           version: ${{ steps.get_version.outputs.VERSION }}+1.21.1-fabric
           version-type: release
 
@@ -76,12 +75,11 @@ jobs:
           game-versions: "1.21.1"
 
           dependencies: |
-            cobblemon(required)
+            cobblemon@1.7.0(required)
             fabric-api(required)
             fabric-language-kotlin(required)
 
           java: 21
           modrinth-featured: true
-          curseforge-server-side: required
 
           changelog-file: CHANGELOG.md
