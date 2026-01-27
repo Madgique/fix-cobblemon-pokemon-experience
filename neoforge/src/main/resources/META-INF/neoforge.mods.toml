@@ -1,6 +1,6 @@
 modLoader = "kotlinforforge"
 loaderVersion = "[5,)"
-license = "MIT"
+license = "LGPLv3"
 
 [[mods]]
 modId = "fix_cobblemon_pokemon_experience"

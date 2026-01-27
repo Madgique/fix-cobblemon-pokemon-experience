@@ -10,7 +10,7 @@
   "contact": {
     "sources": "https://github.com/Madgique/fix_cobblemon_pokemon_experience"
   },
-  "license": "MIT",
+  "license": "LGPLv3",
   "icon": "assets/fix_cobblemon_pokemon_experience/icon.png",
   "environment": "*",
   "entrypoints": {

@@ -2,6 +2,11 @@
 
 A Fabric/NeoForge mod that fixes the experience gain system in Cobblemon to work like the mainline Pokemon games.
 
+## Downloads
+
+[![CurseForge](https://cf.way2muchnoise.eu/full_1435842_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/fix-cobblemon-pokemon-experience/files/all?page=1&pageSize=20&showAlphaFiles=show)
+[![Modrinth Downloads](https://img.shields.io/modrinth/dt/UsGc71LY?style=for-the-badge&logo=modrinth&logoColor=white&labelColor=1AAB89)](https://modrinth.com/mod/UsGc71LY/versions)
+
 ## The Problem
 
 In Cobblemon, experience points (XP) are only awarded at the **end of a battle**. This works fine for wild Pokemon encounters (1v1), but becomes problematic when using trainer mods like [Radical Cobblemon Trainers (RCT)](https://modrinth.com/mod/rctmod).
@@ -54,4 +59,4 @@ This behavior is consistent with how some official Pokemon games handle mid-batt
 
 ## License
 
-LGPLv2.1 License - See [LICENSE](LICENSE) file.
+LGPLv3 License - See [LICENSE](LICENSE) file.
