@@ -1,4 +1,4 @@
-name: Publish to Modrinth and CurseForge
+name: Publish to CurseForge (Modrinth en manuel)
 
 on:
   push:
@@ -37,11 +37,13 @@ jobs:
           COBBLEMON=$(grep '^cobblemon_version' gradle.properties | cut -d= -f2 | tr -d '[:space:]' | cut -d'+' -f1)
           echo "COBBLEMON=$COBBLEMON" >> $GITHUB_OUTPUT
 
-      - name: Publish NeoForge to Modrinth and CurseForge
+      - name: Publish NeoForge to CurseForge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          modrinth-id: ${{ vars.MODRINTH_PROJECT_ID }}
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          # Modrinth desactive temporairement : politique anti-AI de Modrinth.
+          # Publication manuelle sur Modrinth jusqu'a reactivation.
+          # modrinth-id: ${{ vars.MODRINTH_PROJECT_ID }}
+          # modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           curseforge-id: ${{ vars.CURSEFORGE_PROJECT_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
@@ -59,16 +61,18 @@ jobs:
             kotlin-for-forge(required)
 
           java: 21
-          modrinth-featured: true
+          # modrinth-featured: true
 
           changelog-file: CHANGELOG.md
           fail-mode: skip
 
-      - name: Publish Fabric to Modrinth and CurseForge
+      - name: Publish Fabric to CurseForge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          modrinth-id: ${{ vars.MODRINTH_PROJECT_ID }}
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          # Modrinth desactive temporairement : politique anti-AI de Modrinth.
+          # Publication manuelle sur Modrinth jusqu'a reactivation.
+          # modrinth-id: ${{ vars.MODRINTH_PROJECT_ID }}
+          # modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           curseforge-id: ${{ vars.CURSEFORGE_PROJECT_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
@@ -87,7 +91,7 @@ jobs:
             fabric-language-kotlin(required)
 
           java: 21
-          modrinth-featured: true
+          # modrinth-featured: true
 
           changelog-file: CHANGELOG.md
           fail-mode: skip

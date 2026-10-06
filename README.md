@@ -21,7 +21,7 @@ This mod changes the XP system to award experience **immediately after each Poke
 - XP is awarded instantly when you KO a Pokemon
 - Works with Exp Share items (same behavior as vanilla Cobblemon)
 - Compatible with trainer mods like RCT
-- Compatible with [Cobblemon EXP-All](https://modrinth.com/mod/cobblemonexpall) and other mods that hook experience rewards
+- Compatible with [Cobblemon EXP-All](https://modrinth.com/mod/cobblemon-exp.-all) and other mods that hook experience rewards
 - No configuration needed
 
 ## How It Works
