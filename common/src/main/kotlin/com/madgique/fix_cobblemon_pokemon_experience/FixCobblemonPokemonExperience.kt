@@ -6,10 +6,7 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor
-import com.cobblemon.mod.common.api.pokemon.experience.BattleExperienceSource
-import com.cobblemon.mod.common.battles.actor.PlayerBattleActor
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.util.getPlayer
 import net.minecraft.network.chat.Component
 
 object FixCobblemonPokemonExperience {
@@ -68,18 +65,8 @@ object FixCobblemonPokemonExperience {
         if (experience > 0) {
             val oldLevel = pokemon.level
 
-            // Donner l'XP avec gestion du level up
-            if (opponentActor is PlayerBattleActor) {
-                val player = opponentActor.uuid.getPlayer()
-                if (player != null) {
-                    val source = BattleExperienceSource(battle, opponentPokemon.facedOpponents.toList())
-                    pokemon.addExperienceWithPlayer(player, source, experience)
-                } else {
-                    opponentActor.awardExperience(opponentPokemon, experience)
-                }
-            } else {
-                opponentActor.awardExperience(opponentPokemon, experience)
-            }
+            // Donner l'XP via l'acteur pour compatibilité avec d'autres mods (Exp All, etc.)
+            opponentActor.awardExperience(opponentPokemon, experience)
 
             val newLevel = pokemon.level
 

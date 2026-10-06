@@ -31,6 +31,12 @@ jobs:
         id: get_version
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
+      - name: Extract Cobblemon version from gradle.properties
+        id: get_cobblemon
+        run: |
+          COBBLEMON=$(grep '^cobblemon_version' gradle.properties | cut -d= -f2 | tr -d '[:space:]' | cut -d'+' -f1)
+          echo "COBBLEMON=$COBBLEMON" >> $GITHUB_OUTPUT
+
       - name: Publish NeoForge to Modrinth and CurseForge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
@@ -41,7 +47,7 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           files: neoforge/build/libs/*-neoforge.jar
-          name: FCPE for Cobblemon 1.7.1 ${{ steps.get_version.outputs.VERSION }}+1.21.1 (NeoForge)
+          name: FCPE for Cobblemon ${{ steps.get_cobblemon.outputs.COBBLEMON }} ${{ steps.get_version.outputs.VERSION }}+1.21.1 (NeoForge)
           version: ${{ steps.get_version.outputs.VERSION }}+1.21.1-neoforge
           version-type: release
 
@@ -49,13 +55,14 @@ jobs:
           game-versions: "1.21.1"
 
           dependencies: |
-            cobblemon@1.7.0(required)
+            cobblemon@${{ steps.get_cobblemon.outputs.COBBLEMON }}(required)
             kotlin-for-forge(required)
 
           java: 21
           modrinth-featured: true
 
           changelog-file: CHANGELOG.md
+          fail-mode: skip
 
       - name: Publish Fabric to Modrinth and CurseForge
         uses: Kir-Antipov/mc-publish@v3.3
@@ -67,7 +74,7 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           files: fabric/build/libs/*-fabric.jar
-          name: FCPE for Cobblemon 1.7.1 ${{ steps.get_version.outputs.VERSION }}+1.21.1 (Fabric)
+          name: FCPE for Cobblemon ${{ steps.get_cobblemon.outputs.COBBLEMON }} ${{ steps.get_version.outputs.VERSION }}+1.21.1 (Fabric)
           version: ${{ steps.get_version.outputs.VERSION }}+1.21.1-fabric
           version-type: release
 
@@ -75,7 +82,7 @@ jobs:
           game-versions: "1.21.1"
 
           dependencies: |
-            cobblemon@1.7.0(required)
+            cobblemon@${{ steps.get_cobblemon.outputs.COBBLEMON }}(required)
             fabric-api(required)
             fabric-language-kotlin(required)
 
@@ -83,3 +90,4 @@ jobs:
           modrinth-featured: true
 
           changelog-file: CHANGELOG.md
+          fail-mode: skip

@@ -33,14 +33,23 @@ subprojects {
         // See https://docs.gradle.org/current/userguide/declaring_repositories.html
         // for more information about repositories.
 
+        // Librairies (night-config pour forge-config-api-port, jgrapht/apfloat/jheaps pour rctmod)
+        mavenCentral()
+
         // Cobblemon
         maven { url = "https://maven.impactdev.net/repository/development/" }
 
         // Mod Menu
         maven { url = "https://maven.terraformersmc.com/releases" }
 
-        // Parchment
-        maven { url = "https://maven.parchmentmc.org" }
+        // Modrinth (Radical Cobblemon Trainers et ses dependances)
+        maven {
+            name = "Modrinth"
+            url = "https://api.modrinth.com/maven"
+            content {
+                includeGroup "maven.modrinth"
+            }
+        }
     }
 
     loom {
@@ -49,11 +58,7 @@ subprojects {
 
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
-        // Layered mappings comme Cobblemon : Mojang + Parchment
-        mappings loom.layered {
-            officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-${rootProject.parchment_mc_version}:${rootProject.parchment_version}")
-        }
+        mappings loom.officialMojangMappings()
     }
 
     java {

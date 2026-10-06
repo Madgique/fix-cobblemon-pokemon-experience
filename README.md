@@ -21,6 +21,7 @@ This mod changes the XP system to award experience **immediately after each Poke
 - XP is awarded instantly when you KO a Pokemon
 - Works with Exp Share items (same behavior as vanilla Cobblemon)
 - Compatible with trainer mods like RCT
+- Compatible with [Cobblemon EXP-All](https://modrinth.com/mod/cobblemonexpall) and other mods that hook experience rewards
 - No configuration needed
 
 ## How It Works
@@ -32,17 +33,24 @@ This mod changes the XP system to award experience **immediately after each Poke
 ## Installation
 
 1. Install [Fabric Loader](https://fabricmc.net/) or [NeoForge](https://neoforged.net/) for Minecraft 1.21.1
-2. Install [Cobblemon](https://cobblemon.com/) 1.7.0+
+2. Install [Cobblemon](https://cobblemon.com/) 1.8.0+
 3. Download the mod JAR and place it in your `mods` folder
 
 ## Compatibility
 
 - Minecraft: 1.21.1
-- Cobblemon: 1.7.0+
-- Fabric Loader: 0.18.4+ / NeoForge: 21.1.172+
+- Cobblemon: 1.8.0+
+- Fabric Loader: 0.19.5+ / NeoForge: 21.1.215+
 - Works with: Radical Cobblemon Trainers (RCT) and other trainer mods
 
 ## FAQ / Known Limitations
+
+### Cobblemon 1.8 added native XP options. Do I still need this mod?
+
+Yes. Cobblemon 1.8.0 added two config options under the Battles category, but neither changes *when* XP is awarded. All XP is still distributed from the end-of-battle handler.
+
+- **`awardExperienceOnBattleLoss`** — awards XP for enemies you KO'd even if you lose or forfeit the battle. This mod already covers this case: you gain XP at each KO, including the ones right before you lose. You can leave this option off.
+- **`awardExperienceToFaintedPokemon`** — lets already-fainted members of your team gain XP for enemies they helped defeat. **This mod does not support this.** XP is only awarded to your surviving Pokemon, and because this mod replaces Cobblemon's end-of-battle XP distribution, enabling the option has no effect while this mod is installed.
 
 ### My Pokemon leveled up during battle but the stats in combat didn't change?
 

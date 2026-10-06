@@ -33,11 +33,26 @@ dependencies {
     // Fabric Language Kotlin (required by Cobblemon)
     modImplementation "net.fabricmc:fabric-language-kotlin:$rootProject.fabric_kotlin_version"
 
-    // Cobblemon
-    modCompileOnly("com.cobblemon:fabric:$rootProject.cobblemon_version") { transitive = false }
+    // Cobblemon (modImplementation comme les projets Architectury de reference)
+    modImplementation("com.cobblemon:fabric:$rootProject.cobblemon_version")
 
     // Mod Menu
     modImplementation "com.terraformersmc:modmenu:$rootProject.mod_menu_version"
+
+    // Radical Cobblemon Trainers + dependances (dev uniquement, pour tester les combats de dresseurs)
+    modLocalRuntime "maven.modrinth:rctmod:$rootProject.rctmod_version"
+    modLocalRuntime "maven.modrinth:rctapi:$rootProject.rctapi_version"
+    modLocalRuntime "maven.modrinth:forge-config-api-port:$rootProject.forge_config_api_port_version"
+    modLocalRuntime "maven.modrinth:architectury-api:$rootProject.architectury_api_version"
+
+    // Jar-in-jar embarques par ces mods mais NON deplies par Loom en dev ->
+    // il faut les declarer explicitement (cf. reference sur Refined Storage/Cardinal Components)
+    runtimeOnly "com.electronwill.night-config:core:3.8.0"
+    runtimeOnly "com.electronwill.night-config:toml:3.8.0"
+    runtimeOnly "org.jgrapht:jgrapht-core:1.5.2"
+    runtimeOnly "org.jgrapht:jgrapht-ext:1.5.2"
+    runtimeOnly "org.jheaps:jheaps:0.14"
+    runtimeOnly "org.apfloat:apfloat:1.15.0"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')

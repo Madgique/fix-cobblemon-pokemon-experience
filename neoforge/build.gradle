@@ -36,6 +36,7 @@ dependencies {
 
     // Cobblemon
     modCompileOnly("com.cobblemon:neoforge:$rootProject.cobblemon_version") { transitive = false }
+    modLocalRuntime("com.cobblemon:neoforge:$rootProject.cobblemon_version")
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
